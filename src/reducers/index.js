@@ -1,12 +1,5 @@
 import { combineReducers } from 'redux';
-
-const initialState = {};
-
-function chatReducer(state = initialState, action) {
-    return {
-      ...state
-    }
-}
+import {default as counter} from './counterReducer';
 
 /**
  * Export our root reducer
@@ -14,5 +7,5 @@ function chatReducer(state = initialState, action) {
  * @return {Object-Reducer} root reducer
  */
 export default combineReducers({
-	chatReducer
+	counter
 });
