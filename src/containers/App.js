@@ -7,20 +7,12 @@ import Todos  from './Todos';
 
 class App extends Component {
 
-    addTodo(todo) {
-        this.props.actions.addTodo(todo);
-    }
-
-    completeTodo(todo) {
-        this.props.actions.completeTodo(todo);
-    }
-
     render() {
         return (
             <div>
                 <Todos todos={this.props.todos}
-                       addTodo={(todo) => this.addTodo(todo)}
-                       completeTodo={(todo) => this.completeTodo(todo)}
+                       addTodo={(todo) => this.props.actions.addTodo(todo)}
+                       completeTodo={(todo) => this.props.actions.completeTodo(todo)}
                        toggleTodos={(filter) => this.props.actions.toggleTodos(filter)}
                        filter={this.props.filter}
                 />
