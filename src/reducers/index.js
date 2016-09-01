@@ -1,10 +1,16 @@
 import { combineReducers } from 'redux';
-import {default as counter} from './counterReducer';
+
+function counter(state = 0, action) {
+	switch(action.type) {
+		case "USER_CLICK":
+			return state + 1;
+		default:
+			return state;
+	}
+}
 
 /**
  * Export our root reducer
- * @param  {Object-Reducer} {auth reducer}
- * @return {Object-Reducer} root reducer
  */
 export default combineReducers({
 	counter

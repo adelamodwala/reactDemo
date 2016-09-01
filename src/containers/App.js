@@ -6,10 +6,8 @@ import * as counterActions from '../reducers/counterActions';
 class App extends Component {
 
   onBtnClick() {
-    let {actions} = this.props;
-    actions.userClick();
+    this.props.actions.userClick();
   }
-
 
   render() {
     return (
@@ -23,9 +21,8 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  const {clicks} = state.counter;
   return {
-    clicks
+    clicks: state.counter
   }
 }
 
