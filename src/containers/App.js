@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as counterActions from '../reducers/counterActions';
+import * as appActions from '../reducers/appActions';
+
+import Counter  from './Counter';
+import Todos  from './Todos';
 
 class App extends Component {
 
@@ -12,9 +15,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.onBtnClick()}>Click Me!</button>
-
-        <div>Clicks: {this.props.clicks}</div>
+        <Counter clicks={this.props.clicks} onBtnClick={() => this.onBtnClick() }/>
+        <Todos />
       </div>
     );
   }
@@ -27,7 +29,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const {userClick} = counterActions;
+  const {userClick} = appActions;
   const dispatchActions = bindActionCreators({ userClick }, dispatch);
   return {
     dispatch,

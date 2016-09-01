@@ -9,9 +9,18 @@ function counter(state = 0, action) {
 	}
 }
 
+function todos(state = {}, action) {
+	switch(action.type) {
+
+		default:
+			return state;
+	}
+}
+
 /**
  * Export our root reducer
  */
 export default combineReducers({
-	counter
+	counter,
+	todos
 });
