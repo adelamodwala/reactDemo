@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import TodoFilter from './TodoFilter';
+
 export default class Todos extends Component {
 
     addTodo() {
@@ -29,7 +31,7 @@ export default class Todos extends Component {
                 <ol>
                     {this.props.todos.map((todo, idx) => {
                         let {filter} = this.props;
-                        if(filter == "all"
+                        if (filter == "all"
                             || (filter == "remaining" && !todo.complete)
                             || (filter == "complete" && todo.complete)) {
                             return (
@@ -42,9 +44,15 @@ export default class Todos extends Component {
                 </ol>
                 <div>
                     <span>Toggle: </span>
-                    <span style={{color: this.props.filter == "all" ? 'black' : 'blue', margin: 3}} onClick={() => this.toggleTodos("all")}>All</span>
-                    <span style={{color: this.props.filter == "complete" ? 'black' : 'blue', margin: 3}} onClick={() => this.toggleTodos("complete")}>Complete</span>
-                    <span style={{color: this.props.filter == "remaining" ? 'black' : 'blue', margin: 3}} onClick={() => this.toggleTodos("remaining")}>Remaining</span>
+                    <TodoFilter selectedFilter={this.props.filter}
+                                filter="all" title="All"
+                                toggleTodos={(filter) => this.toggleTodos(filter)}/>
+                    <TodoFilter selectedFilter={this.props.filter}
+                                filter="complete" title="Complete"
+                                toggleTodos={(filter) => this.toggleTodos(filter)}/>
+                    <TodoFilter selectedFilter={this.props.filter}
+                                filter="remaining" title="Remaining"
+                                toggleTodos={(filter) => this.toggleTodos(filter)}/>
                 </div>
             </div>
         );
