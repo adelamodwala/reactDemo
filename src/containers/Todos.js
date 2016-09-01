@@ -24,10 +24,24 @@ export default class Todos extends Component {
             <div>
                 <h3>To Do List</h3>
 
+                <div style={{margin: 10, marginLeft: 0}}>
+                    <span>Filter: </span>
+                    <TodoFilter selectedFilter={this.props.filter}
+                                filter="all" title="All"
+                                toggleTodos={(filter) => this.toggleTodos(filter)}/>
+                    <TodoFilter selectedFilter={this.props.filter}
+                                filter="complete" title="Complete"
+                                toggleTodos={(filter) => this.toggleTodos(filter)}/>
+                    <TodoFilter selectedFilter={this.props.filter}
+                                filter="remaining" title="Remaining"
+                                toggleTodos={(filter) => this.toggleTodos(filter)}/>
+                </div>
+
                 <div>
                     <input ref="todoInput" placeholder="Add a to do..."/>
                     <button onClick={() => this.addTodo()}>Add</button>
                 </div>
+
                 <ol>
                     {this.props.todos.map((todo, idx) => {
                         let {filter} = this.props;
@@ -42,18 +56,6 @@ export default class Todos extends Component {
                         }
                     }, this)}
                 </ol>
-                <div>
-                    <span>Toggle: </span>
-                    <TodoFilter selectedFilter={this.props.filter}
-                                filter="all" title="All"
-                                toggleTodos={(filter) => this.toggleTodos(filter)}/>
-                    <TodoFilter selectedFilter={this.props.filter}
-                                filter="complete" title="Complete"
-                                toggleTodos={(filter) => this.toggleTodos(filter)}/>
-                    <TodoFilter selectedFilter={this.props.filter}
-                                filter="remaining" title="Remaining"
-                                toggleTodos={(filter) => this.toggleTodos(filter)}/>
-                </div>
             </div>
         );
     }
