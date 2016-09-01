@@ -9,7 +9,7 @@ function counter(state = 0, action) {
 	}
 }
 
-function todos(state = {}, action) {
+function todos(state = [], action) {
 	switch(action.type) {
 
 		default:

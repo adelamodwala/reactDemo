@@ -5,7 +5,7 @@ export default class Counter extends Component {
         return(
             <div>
                 <button onClick={() => this.props.onBtnClick()}>Click Me!</button>
-                <div>Clicks: {this.props.clicks}</div>
+                <span>Clicks: {this.props.clicks}</span>
             </div>
         );
     }
